@@ -5,7 +5,7 @@
 
 */
 
-function ss_options_install()
+function decagon_options_install()
 {
     global $wpdb;
 
@@ -13,7 +13,7 @@ function ss_options_install()
     $charset_collate = $wpdb->get_charset_collate();
 
     $sql = "CREATE TABLE $table_name (
-            `id` varchar(3) NOT NULL AUTO_INCREMENT,
+            `id` int(10) NOT NULL AUTO_INCREMENT,
             `name` varchar(50)  CHARACTER SET utf8  NOT NULL,
             `category` varchar(50)  CHARACTER SET utf8  NOT NULL,
             `description` Text  CHARACTER SET utf8  NULL,
@@ -23,9 +23,9 @@ function ss_options_install()
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
     dbDelta($sql);
 }
- 
+  
 // Install Plugin
-register_activation_hook(__FILE__, 'ss_options_install');
+register_activation_hook(__FILE__, 'decagon_options_install');
 
 // Menu
 function decagon_recipe_modifymenu() {
